@@ -11,22 +11,6 @@ const Product = ({ product, addProduct }) => {
 
   let formattedPrice = formatPrice(product.price, product.currencyId);
 
-  let productInstallment;
-
-  if (!!product.installments) {
-    const installmentPrice = product.price / product.installments;
-
-    productInstallment = (
-      <div className="installment">
-        <span>or {product.installments} x</span>
-        <b>
-          {product.currencyFormat}
-          {formatPrice(installmentPrice, product.currencyId)}
-        </b>
-      </div>
-    );
-  }
-
   return (
     <div
       className="shelf-item"
@@ -44,7 +28,6 @@ const Product = ({ product, addProduct }) => {
           <b>{formattedPrice.substr(0, formattedPrice.length - 3)}</b>
           <span>{formattedPrice.substr(formattedPrice.length - 3, 3)}</span>
         </div>
-        {productInstallment}
       </div>
       <div className="shelf-item__buy-btn">Add to cart</div>
     </div>
